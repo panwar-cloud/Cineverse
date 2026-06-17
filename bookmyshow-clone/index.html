@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookMyShow - Movie Ticket Booking Clone</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="logo" id="logo-home">
+        <span>🎬</span>bookmy<span>show</span>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+      </div>
+      <div class="header-actions">
+        <button class="location-picker" id="btn-location">
+          Delhi-NCR ▾
+        </button>
+        <button class="btn-signin" id="btn-header-signin">Sign in</button>
+        <span id="user-display" style="display: none; font-weight: 600; font-size: 0.95rem; color: #f84464;"></span>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="nav-container">
+        <div class="nav-links">
+          <a href="#" class="active">Movies</a>
+          <a href="#">Stream</a>
+          <a href="#">Events</a>
+          <a href="#">Plays</a>
+          <a href="#">Sports</a>
+          <a href="#">Activities</a>
+        </div>
+        <div class="nav-secondary">
+          <a href="#">ListYourShow</a>
+          <a href="#">Corporates</a>
+          <a href="#">Offers</a>
+          <a href="#">Gift Cards</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main View Area -->
+  <main class="content-area">
+
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view-section active">
+      <!-- Carousel Hero Banners -->
+      <div class="hero-carousel" id="carousel-banners">
+        <!-- Will be dynamically populated by app.js -->
+      </div>
+
+      <!-- Main Filter and Movie Grid Section -->
+      <div class="movie-section-container">
+        <aside class="filters-sidebar">
+          <div class="filter-group">
+            <h3>Languages</h3>
+            <div class="filter-options" id="filter-languages">
+              <button class="filter-btn selected" data-value="all">All</button>
+              <button class="filter-btn" data-value="English">English</button>
+              <button class="filter-btn" data-value="Hindi">Hindi</button>
+              <button class="filter-btn" data-value="Telugu">Telugu</button>
+              <button class="filter-btn" data-value="Spanish">Spanish</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h3>Genres</h3>
+            <div class="filter-options" id="filter-genres">
+              <button class="filter-btn selected" data-value="all">All</button>
+              <button class="filter-btn" data-value="Sci-Fi">Sci-Fi</button>
+              <button class="filter-btn" data-value="Action">Action</button>
+              <button class="filter-btn" data-value="Romance">Romance</button>
+              <button class="filter-btn" data-value="Drama">Drama</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="movies-grid-wrapper">
+          <h2>Recommended Movies</h2>
+          <div class="movies-grid" id="movies-container">
+            <!-- Will be dynamically populated by app.js -->
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- MOVIE DETAILS VIEW -->
+    <section id="view-details" class="view-section">
+      <button class="btn-secondary" id="btn-back-to-home" style="margin-bottom: 20px; width: auto; padding: 8px 15px;">← Back to Movies</button>
+      <div id="movie-details-container">
+        <!-- Will be dynamically populated by app.js -->
+      </div>
+    </section>
+
+    <!-- SHOWTIME SELECTION VIEW -->
+    <section id="view-showtimes" class="view-section">
+      <button class="btn-secondary" id="btn-back-to-details" style="margin-bottom: 20px; width: auto; padding: 8px 15px;">← Back to Details</button>
+      <div class="showtime-header" id="showtime-movie-meta">
+        <!-- Will be dynamically populated by app.js -->
+      </div>
+      <div class="showtime-header">
+        <div class="date-carousel" id="date-picker-container">
+          <!-- Will be dynamically populated by app.js -->
+        </div>
+      </div>
+      <div class="cinema-list" id="cinemas-container">
+        <!-- Will be dynamically populated by app.js -->
+      </div>
+    </section>
+
+    <!-- SEAT SELECTION VIEW -->
+    <section id="view-seats" class="view-section">
+      <button class="btn-secondary" id="btn-back-to-showtimes" style="margin-bottom: 20px; width: auto; padding: 8px 15px;">← Back to Showtimes</button>
+      
+      <div class="seat-booking-container">
+        <!-- Left: Seat Map Grid -->
+        <div class="seat-selector-card">
+          <h2 style="margin-bottom: 10px;">Select Seats</h2>
+          <div class="seats-legend">
+            <div class="legend-item"><div class="legend-box" style="background-color: var(--seat-available);"></div> Available</div>
+            <div class="legend-item"><div class="legend-box" style="background-color: var(--seat-selected);"></div> Selected</div>
+            <div class="legend-item"><div class="legend-box" style="background-color: var(--seat-sold);"></div> Sold</div>
+          </div>
+          
+          <div class="screen-indicator"></div>
+          <div class="screen-text">All eyes this way</div>
+          
+          <div class="seats-grid" id="seats-grid-container">
+            <!-- Will be dynamically populated by app.js -->
+          </div>
+        </div>
+        
+        <!-- Right: Booking Summary Sidebar -->
+        <div class="checkout-summary-card">
+          <h3>Booking Summary</h3>
+          <div id="checkout-meta">
+            <!-- Will be dynamically populated by app.js -->
+          </div>
+          <div class="summary-row" style="margin-top: 15px; font-weight: 500;">
+            <span>Selected Seats</span>
+            <span id="summary-seats-list" style="color: var(--accent-color);">None</span>
+          </div>
+          <div class="summary-row">
+            <span>Ticket Price</span>
+            <span id="summary-ticket-price">Rs. 0</span>
+          </div>
+          <div class="summary-row" id="summary-fnb-row" style="display: none;">
+            <span>Snacks & Drinks</span>
+            <span id="summary-fnb-price">Rs. 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Convenience Fee (15%)</span>
+            <span id="summary-fee">Rs. 0</span>
+          </div>
+          <div class="summary-row total">
+            <span>Amount Payable</span>
+            <span id="summary-total-price">Rs. 0</span>
+          </div>
+          
+          <button class="btn-proceed" id="btn-proceed-to-fnb" disabled>Book Seats</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKET RECEIPT VIEW -->
+    <section id="view-ticket" class="view-section">
+      <div class="ticket-success-container">
+        <div class="success-icon">✓</div>
+        <h2>Booking Successful!</h2>
+        <p>Your movie ticket is confirmed. Have a great time at the movies!</p>
+        
+        <div class="movie-ticket" id="movie-ticket-print">
+          <!-- Will be dynamically populated by app.js -->
+        </div>
+        
+        <div class="ticket-actions">
+          <button class="btn-ticket-action" onclick="window.print()">Print Ticket</button>
+          <button class="btn-ticket-action" id="btn-back-home-direct">Go to Homepage</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALS -->
+
+  <!-- F&B Add-on Modal -->
+  <div class="modal-overlay" id="fnb-modal">
+    <div class="modal-content">
+      <button class="close-modal-btn" id="btn-close-fnb">&times;</button>
+      <h3 class="modal-title">Grab a bite! 🍿</h3>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px; font-size: 0.9rem;">
+        Prebook your snacks now and save up to 20% at the counter.
+      </p>
+      
+      <div class="fnb-items-grid" id="fnb-items-container">
+        <!-- Will be dynamically populated by app.js -->
+      </div>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-skip-fnb">Skip Add-ons</button>
+        <button class="btn-primary" id="btn-confirm-fnb">Add & Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign In Modal -->
+  <div class="modal-overlay" id="signin-modal">
+    <div class="modal-content" style="max-width: 400px;">
+      <button class="close-modal-btn" id="btn-close-signin">&times;</button>
+      <h3 class="modal-title" style="margin-bottom: 10px;">Get Active 🚀</h3>
+      <p class="signin-desc">Sign in to book tickets, save movies, and access offers.</p>
+      
+      <form id="signin-form" onsubmit="event.preventDefault();">
+        <div class="signin-input-group">
+          <label for="signin-email">Email Address</label>
+          <input type="email" id="signin-email" placeholder="enter your email" required value="guest@example.com">
+        </div>
+        <div class="signin-input-group">
+          <label for="signin-password">Password</label>
+          <input type="password" id="signin-password" placeholder="enter password" required value="password123">
+        </div>
+        <button type="submit" class="btn-modal-signin" id="btn-submit-signin">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 40px 20px; text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.9rem;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; align-items: center;">
+      <div class="logo" style="cursor: default; pointer-events: none;">
+        <span>🎬</span>bookmy<span>show</span>
+      </div>
+      <p style="max-width: 600px;">BookMyShow Clone is a frontend demonstration web application built for showcase purposes, simulating a high-fidelity ticketing workspace flow.</p>
+      <p style="font-size: 0.8rem; margin-top: 10px;">© 2026 Bigtree Entertainment Pvt. Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
